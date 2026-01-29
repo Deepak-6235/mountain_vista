@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import vistaSuite from '../../assets/images/bedroom/bedroom3.png';
 import alpineLodge from '../../assets/images/livingarea/livingarea.png';
@@ -84,6 +85,18 @@ const rooms = [
 ];
 
 export default function RoomsSection() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = window.innerWidth < 768 ? window.innerWidth * 0.85 : window.innerWidth * 0.4;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="py-24 bg-stone-100/50">
       <div className="max-w-[90rem] mx-auto px-4">
@@ -92,17 +105,23 @@ export default function RoomsSection() {
             Curated <span className="font-serif italic text-stone-600">Sanctuaries</span>
           </h3>
           <div className="flex gap-4 mt-6 md:mt-0">
-            <button className="p-4 border border-stone-200 rounded-full hover:border-[#CFA866] transition-colors"><ArrowLeft className="w-5 h-5" /></button>
-            <button className="p-4 border border-stone-200 rounded-full hover:border-[#CFA866] transition-colors"><ArrowRight className="w-5 h-5" /></button>
+            <button onClick={() => scroll('left')} className="p-4 border border-stone-200 rounded-full hover:border-[#CFA866] transition-colors"><ArrowLeft className="w-5 h-5" /></button>
+            <button onClick={() => scroll('right')} className="p-4 border border-stone-200 rounded-full hover:border-[#CFA866] transition-colors"><ArrowRight className="w-5 h-5" /></button>
           </div>
         </div>
 
         {/* Horizontal Scroll Container */}
-        <div className="flex overflow-x-auto gap-8 pb-12 px-4 md:px-12 snap-x snap-mandatory scrollbar-hide">
+        <div ref={scrollContainerRef} className="flex overflow-x-auto gap-8 pb-12 px-4 md:px-12 snap-x snap-mandatory scrollbar-hide">
           {rooms.map((room) => (
             <div key={room.id} className="min-w-[85vw] md:min-w-[40vw] snap-center group relative cursor-pointer">
               <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6">
-                <img src={room.image} className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" alt={room.title} />
+                <img 
+                  src={room.image} 
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110 will-change-transform" 
+                  alt={room.title} 
+                />
               </div>
               <div className="flex justify-between items-start border-t border-stone-200 pt-6">
                 <div>
