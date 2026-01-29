@@ -1,4 +1,6 @@
 import React from 'react';
+import dining from '../../assets/images/dinning/dinning2.png';
+import dining2 from '../../assets/images/dinning/dinning4.png';
 
 export default function DiningSection() {
   return (
@@ -33,12 +35,12 @@ export default function DiningSection() {
 
                 <div className="md:w-2/3 grid grid-cols-2 gap-4">
                     <div className="space-y-4 mt-12">
-                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop" className="w-full aspect-[3/4] object-cover rounded-sm opacity-80 hover:opacity-100 transition-opacity duration-700" alt="Cocktail" />
+                        <img src={dining} className="w-full aspect-[3/4] object-cover rounded-sm opacity-80 hover:opacity-100 transition-opacity duration-700" alt="Cocktail" />
                         <p className="text-xs text-stone-500 uppercase tracking-widest text-right">Botanical Infusions</p>
                     </div>
                     <div className="space-y-4">
                          <p className="text-xs text-stone-500 uppercase tracking-widest">Seasonal Plating</p>
-                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop" className="w-full aspect-[3/4] object-cover rounded-sm opacity-80 hover:opacity-100 transition-opacity duration-700" alt="Fine Dining Dish" />
+                        <img src={dining2} className="w-full aspect-[3/4] object-cover rounded-sm opacity-80 hover:opacity-100 transition-opacity duration-700" alt="Fine Dining Dish" />
                     </div>
                 </div>
             </div>
