@@ -1,9 +1,11 @@
+import topViewImage from '../../assets/images/top/topview12.png';
+
 export default function HeroSection() {
   return (
     <header className="relative w-full h-screen overflow-hidden flex flex-col justify-center items-center">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
-        <img src="./assets/images/top/topview12.png" alt="Mountain Landscape" className="w-full h-full object-cover scale-105 animate-float opacity-90 brightness-[0.6]" />
+        <img src={topViewImage} alt="Mountain Landscape" className="w-full h-full object-cover scale-105 animate-float opacity-90 brightness-[0.6]" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#FDFBF7]"></div>
       </div>
 
