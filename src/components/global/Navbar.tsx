@@ -16,9 +16,9 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center transition-all duration-300 mix-blend-difference text-white bg-gradient-to-b from-black/40 to-transparent">
         <div className="flex items-center gap-2 cursor-pointer" onClick={scrollToTop}>
-            {/* Logo Icon */}
-            {/* @ts-ignore */}
-            <iconify-icon icon="solar:mountains-linear" width="32" height="32" class="text-white"></iconify-icon>
+            <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                <path d="M5 10L20 25L35 10V30H30V18L20 28L10 18V30H5V10Z" fill="currentColor"></path>
+            </svg>
         </div>
         
         {/* Center Menu */}
