@@ -4,10 +4,15 @@ export default function HeroSection() {
   return (
     <header className="relative w-full h-screen overflow-hidden flex flex-col justify-center items-center">
       {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full">
+      {/* <div className="absolute inset-0 w-full h-full">
         <img src={topViewImage} alt="Mountain Landscape" className="w-full h-full object-cover scale-105 animate-float opacity-90 brightness-[0.6]" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#FDFBF7]"></div>
-      </div>
+      </div> */}
+
+          <div className="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Mountain Landscape" className="w-full h-full object-cover scale-105 animate-float opacity-90 brightness-[0.6]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#FDFBF7]"></div>
+        </div>
 
       <div className="relative z-10 text-center px-4 flex flex-col items-center">
         {/* Animated SVG Logo */}
