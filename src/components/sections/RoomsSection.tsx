@@ -1,4 +1,87 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import vistaSuite from '../../assets/images/bedroom/bedroom3.png';
+import alpineLodge from '../../assets/images/livingarea/livingarea.png';
+import gardenVilla from '../../assets/images/pool/pool.png';
+import summitPenthouse from '../../assets/images/bedroom/bedroom4.png';
+import forestRetreat from '../../assets/images/bedroom/bedroom5.png';
+import azureSanctuary from '../../assets/images/pool/pool2.png';
+import heritageSuite from '../../assets/images/bedroom/bedroom6.png';
+import canyonView from '../../assets/images/bedroom/bedroom7.png';
+import serenityLoft from '../../assets/images/bedroom/bedroom8.png';
+import presidentialVilla from '../../assets/images/bedroom/bedroom9.png';
+
+const rooms = [
+  {
+    id: 1,
+    title: "The Vista Suite",
+    description: "Panoramic Mountain View • 120m²",
+    price: "$850",
+    image: vistaSuite
+  },
+  {
+    id: 2,
+    title: "Alpine Lodge",
+    description: "Private Terrace • Fireplace • 180m²",
+    price: "$1,200",
+    image: alpineLodge
+  },
+  {
+    id: 3,
+    title: "Garden Villa",
+    description: "Secluded Garden • Plunge Pool • 200m²",
+    price: "$1,500",
+    image: gardenVilla
+  },
+  {
+    id: 4,
+    title: "Summit Penthouse",
+    description: "Private Balcony • Sky Views • 220m²",
+    price: "$2,100",
+    image: summitPenthouse
+  },
+  {
+    id: 5,
+    title: "Forest Retreat",
+    description: "Nature Immersion • Glass Walls • 90m²",
+    price: "$750",
+    image: forestRetreat
+  },
+  {
+    id: 6,
+    title: "Azure Sanctuary",
+    description: "Infinity Pool • Sunset View • 300m²",
+    price: "$3,200",
+    image: azureSanctuary
+  },
+  {
+    id: 7,
+    title: "The Heritage Suite",
+    description: "Colonial Architecture • 110m²",
+    price: "$980",
+    image: heritageSuite
+  },
+  {
+    id: 8,
+    title: "Canyon View Room",
+    description: "Dramatic Scenery • Stone Bath • 65m²",
+    price: "$600",
+    image: canyonView
+  },
+  {
+    id: 9,
+    title: "Serenity Loft",
+    description: "Minimalist Design • Meditation Space • 85m²",
+    price: "$720",
+    image: serenityLoft
+  },
+  {
+    id: 10,
+    title: "Presidential Villa",
+    description: "Private Wing • Butler Service • 450m²",
+    price: "$5,000",
+    image: presidentialVilla
+  }
+];
 
 export default function RoomsSection() {
   return (
@@ -16,48 +99,20 @@ export default function RoomsSection() {
 
         {/* Horizontal Scroll Container */}
         <div className="flex overflow-x-auto gap-8 pb-12 px-4 md:px-12 snap-x snap-mandatory scrollbar-hide">
-          
-          {/* Card 1 */}
-          <div className="min-w-[85vw] md:min-w-[40vw] snap-center group relative cursor-pointer">
-            <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6">
-              <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=2525&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" alt="Vista Suite" />
-            </div>
-            <div className="flex justify-between items-start border-t border-stone-200 pt-6">
-              <div>
-                <h4 className="text-2xl font-serif italic text-stone-900 mb-1">The Vista Suite</h4>
-                <p className="text-stone-500 text-sm font-light">Panoramic Mountain View • 120m²</p>
+          {rooms.map((room) => (
+            <div key={room.id} className="min-w-[85vw] md:min-w-[40vw] snap-center group relative cursor-pointer">
+              <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6">
+                <img src={room.image} className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" alt={room.title} />
               </div>
-              <span className="text-lg font-medium text-[#CFA866]">$850</span>
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div className="min-w-[85vw] md:min-w-[40vw] snap-center group relative cursor-pointer">
-            <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6">
-              <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=2574&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" alt="Alpine Lodge" />
-            </div>
-            <div className="flex justify-between items-start border-t border-stone-200 pt-6">
-              <div>
-                <h4 className="text-2xl font-serif italic text-stone-900 mb-1">Alpine Lodge</h4>
-                <p className="text-stone-500 text-sm font-light">Private Terrace • Fireplace • 180m²</p>
+              <div className="flex justify-between items-start border-t border-stone-200 pt-6">
+                <div>
+                  <h4 className="text-2xl font-serif italic text-stone-900 mb-1">{room.title}</h4>
+                  <p className="text-stone-500 text-sm font-light">{room.description}</p>
+                </div>
+                <span className="text-lg font-medium text-[#CFA866]">{room.price}</span>
               </div>
-              <span className="text-lg font-medium text-[#CFA866]">$1,200</span>
             </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="min-w-[85vw] md:min-w-[40vw] snap-center group relative cursor-pointer">
-            <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6">
-              <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=2670&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" alt="Garden Villa" />
-            </div>
-            <div className="flex justify-between items-start border-t border-stone-200 pt-6">
-              <div>
-                <h4 className="text-2xl font-serif italic text-stone-900 mb-1">Garden Villa</h4>
-                <p className="text-stone-500 text-sm font-light">Secluded Garden • Plunge Pool • 200m²</p>
-              </div>
-              <span className="text-lg font-medium text-[#CFA866]">$1,500</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
