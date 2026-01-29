@@ -35,13 +35,15 @@ export default function DiningSection() {
 
                 <div className="md:w-2/3 grid grid-cols-2 gap-4">
                     <div className="space-y-4 mt-12">
-                        <img src={dining} className="w-full aspect-[3/4] object-cover rounded-sm opacity-80 hover:opacity-100 transition-opacity duration-700" alt="Cocktail" />
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop" className="w-full aspect-[3/4] object-cover rounded-sm opacity-80 hover:opacity-100 transition-opacity duration-700" alt="Fine Dining Dish" />
+                    
                         <p className="text-xs text-stone-500 uppercase tracking-widest text-right">Botanical Infusions</p>
                     </div>
                     <div className="space-y-4">
+                        <img src={dining2} className="w-full aspect-[3/4] object-cover rounded-sm opacity-80 hover:opacity-100 transition-opacity duration-700" alt="Cocktail" />
+                        
                          <p className="text-xs text-stone-500 uppercase tracking-widest">Seasonal Plating</p>
-                        <img src={dining2} className="w-full aspect-[3/4] object-cover rounded-sm opacity-80 hover:opacity-100 transition-opacity duration-700" alt="Fine Dining Dish" />
-                    </div>
+                        </div>
                 </div>
             </div>
         </div>
