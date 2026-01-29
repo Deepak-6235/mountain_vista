@@ -1,17 +1,12 @@
-import topViewImage from '../../assets/images/top/topview12.png';
+import React from 'react';
 
 export default function HeroSection() {
   return (
     <header className="relative w-full h-screen overflow-hidden flex flex-col justify-center items-center">
-      {/* Background Image */}
-      {/* <div className="absolute inset-0 w-full h-full">
-        <img src={topViewImage} alt="Mountain Landscape" className="w-full h-full object-cover scale-105 animate-float opacity-90 brightness-[0.6]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#FDFBF7]"></div>
-      </div> */}
-
-          <div className="absolute inset-0 w-full h-full">
-            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Mountain Landscape" className="w-full h-full object-cover scale-105 animate-float opacity-90 brightness-[0.6]" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#FDFBF7]"></div>
+        {/* Background */}
+        <div className="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop" alt="Mountain Landscape" className="w-full h-full object-cover scale-105 animate-float opacity-90 brightness-[0.65]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-transparent to-[#FDFBF7]"></div>
         </div>
 
       <div className="relative z-10 text-center px-4 flex flex-col items-center">
@@ -30,11 +25,11 @@ export default function HeroSection() {
         </p>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
-        <span className="text-white text-xs tracking-[0.2em] uppercase">Discover</span>
-        <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent"></div>
-      </div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+            <span className="text-white text-xs tracking-[0.2em] uppercase">Discover</span>
+            <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent"></div>
+        </div>
     </header>
   );
 }

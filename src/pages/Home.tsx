@@ -6,20 +6,18 @@ import BookingBar from '../components/sections/BookingBar';
 import PhilosophySection from '../components/sections/PhilosophySection';
 import RoomsSection from '../components/sections/RoomsSection';
 import DiningSection from '../components/sections/DiningSection';
+import WellnessSection from '../components/sections/WellnessSection';
+import ExperiencesSection from '../components/sections/ExperiencesSection';
 
 export default function Home() {
   useEffect(() => {
-    // Simple parallax effect script
+    // Simple parallax logic for specific sections
     const handleScroll = () => {
-      const parallaxImages = document.querySelectorAll('img');
-      parallaxImages.forEach(img => {
-        const speed = 0.05;
-        const yPos = -(window.scrollY * speed);
-        // Apply only to hero mainly to avoid jitter
-        if (img.parentElement?.parentElement?.tagName === 'HEADER') {
-          img.style.transform = `translateY(${yPos}px) scale(1.05)`;
+        const scrollY = window.scrollY;
+        const heroImg = document.querySelector('header img') as HTMLElement;
+        if(heroImg) {
+            heroImg.style.transform = `scale(1.05) translateY(${scrollY * 0.1}px)`;
         }
-      });
     };
 
     document.addEventListener('scroll', handleScroll);
@@ -33,7 +31,9 @@ export default function Home() {
       <BookingBar />
       <PhilosophySection />
       <RoomsSection />
+      <WellnessSection />
       <DiningSection />
+      <ExperiencesSection />
       <Footer />
     </div>
   );
