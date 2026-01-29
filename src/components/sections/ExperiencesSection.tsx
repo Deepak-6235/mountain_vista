@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ExperiencesSection() {
   return (
-    <section className="py-24 px-6 md:px-12 bg-[#F9F7F2]">
+    <section id="experiences" className="py-24 px-6 md:px-12 bg-[#F9F7F2]">
         <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-2xl mx-auto mb-20">
                 <span className="text-[#CFA866] text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">Experiences</span>

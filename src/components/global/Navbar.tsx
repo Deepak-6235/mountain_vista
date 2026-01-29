@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function Navbar() {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <nav className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center transition-all duration-300 mix-blend-difference text-white bg-gradient-to-b from-black/40 to-transparent">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 cursor-pointer" onClick={scrollToTop}>
             {/* Logo Icon */}
-        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-          <path d="M5 10L20 25L35 10V30H30V18L20 28L10 18V30H5V10Z" fill="currentColor"></path>
-        </svg>
+            {/* @ts-ignore */}
+            <iconify-icon icon="solar:mountains-linear" width="32" height="32" class="text-white"></iconify-icon>
         </div>
         
         {/* Center Menu */}
         <div className="hidden md:flex gap-12 text-sm font-medium tracking-widest uppercase opacity-90">
-            <a href="#" className="hover:text-[#CFA866] transition-colors duration-300">Residences</a>
-            <a href="#" className="hover:text-[#CFA866] transition-colors duration-300">Dining</a>
-            <a href="#" className="hover:text-[#CFA866] transition-colors duration-300">Wellness</a>
-            <a href="#" className="hover:text-[#CFA866] transition-colors duration-300">About</a>
-            <a href="#" className="hover:text-[#CFA866] transition-colors duration-300">Journal</a>
+            <a href="#rooms" onClick={(e) => scrollToSection(e, 'rooms')} className="hover:text-[#CFA866] transition-colors duration-300">Residences</a>
+            <a href="#dining" onClick={(e) => scrollToSection(e, 'dining')} className="hover:text-[#CFA866] transition-colors duration-300">Dining</a>
+            <a href="#wellness" onClick={(e) => scrollToSection(e, 'wellness')} className="hover:text-[#CFA866] transition-colors duration-300">Wellness</a>
+            <a href="#experiences" onClick={(e) => scrollToSection(e, 'experiences')} className="hover:text-[#CFA866] transition-colors duration-300">Experiences</a>
+            <a href="#philosophy" onClick={(e) => scrollToSection(e, 'philosophy')} className="hover:text-[#CFA866] transition-colors duration-300">Philosophy</a>
         </div>
 
         {/* Right Actions */}
