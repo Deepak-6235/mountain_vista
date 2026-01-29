@@ -1,4 +1,4 @@
-import React from 'react';
+
 import bedroom from '../../assets/images/bedroom/bedroom.png';
 
 export default function PhilosophySection() {

@@ -1,4 +1,3 @@
-import React from 'react';
 import topview from '../../assets/images/top/topview5.png';
 import topview2 from '../../assets/images/top/topview6.png';
 import topview3 from '../../assets/images/top/topview7.png';

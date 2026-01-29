@@ -1,5 +1,3 @@
-import React from 'react';
-import dining from '../../assets/images/dinning/dinning2.png';
 import dining2 from '../../assets/images/dinning/dinning4.png';
 
 export default function DiningSection() {
