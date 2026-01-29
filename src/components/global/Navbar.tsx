@@ -23,11 +23,11 @@ export default function Navbar() {
         
         {/* Center Menu */}
         <div className="hidden md:flex gap-12 text-sm font-medium tracking-widest uppercase opacity-90">
-            <a href="#rooms" onClick={(e) => scrollToSection(e, 'rooms')} className="hover:text-[#CFA866] transition-colors duration-300">Residences</a>
-            <a href="#dining" onClick={(e) => scrollToSection(e, 'dining')} className="hover:text-[#CFA866] transition-colors duration-300">Dining</a>
-            <a href="#wellness" onClick={(e) => scrollToSection(e, 'wellness')} className="hover:text-[#CFA866] transition-colors duration-300">Wellness</a>
-            <a href="#experiences" onClick={(e) => scrollToSection(e, 'experiences')} className="hover:text-[#CFA866] transition-colors duration-300">Experiences</a>
             <a href="#philosophy" onClick={(e) => scrollToSection(e, 'philosophy')} className="hover:text-[#CFA866] transition-colors duration-300">Philosophy</a>
+            <a href="#rooms" onClick={(e) => scrollToSection(e, 'rooms')} className="hover:text-[#CFA866] transition-colors duration-300">Residences</a>
+            <a href="#wellness" onClick={(e) => scrollToSection(e, 'wellness')} className="hover:text-[#CFA866] transition-colors duration-300">Wellness</a>
+            <a href="#dining" onClick={(e) => scrollToSection(e, 'dining')} className="hover:text-[#CFA866] transition-colors duration-300">Dining</a>
+            <a href="#experiences" onClick={(e) => scrollToSection(e, 'experiences')} className="hover:text-[#CFA866] transition-colors duration-300">Experiences</a>
         </div>
 
         {/* Right Actions */}
