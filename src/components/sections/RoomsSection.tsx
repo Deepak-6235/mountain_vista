@@ -98,7 +98,7 @@ export default function RoomsSection() {
   };
 
   return (
-    <section className="py-24 bg-stone-100/50">
+    <section id="rooms" className="py-24 bg-stone-100/50">
       <div className="max-w-[90rem] mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 px-4 md:px-12">
           <h3 className="text-4xl md:text-5xl font-light tracking-tight text-stone-900">
@@ -116,7 +116,7 @@ export default function RoomsSection() {
             <div key={room.id} className="min-w-[85vw] md:min-w-[40vw] snap-center group relative cursor-pointer">
               <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6">
                 <img 
-                  src={room.image} 
+                  src={room.image}
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110 will-change-transform" 

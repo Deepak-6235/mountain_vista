@@ -3,7 +3,7 @@ import bedroom2 from '../../assets/images/bedroom/bedroom4.png';
 
 export default function PhilosophySection() {
   return (
-    <section className="relative py-32 px-6 md:px-12 bg-[#FDFBF7]">
+    <section id="philosophy" className="relative py-32 px-6 md:px-12 bg-[#FDFBF7]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-5 md:col-start-2 z-10">

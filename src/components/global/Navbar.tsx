@@ -11,10 +11,9 @@ export default function Navbar() {
       </div>
       
       <div className="hidden md:flex gap-12 text-sm font-medium tracking-widest uppercase opacity-90">
-        <a href="#" className="hover:text-[#CFA866] transition-colors duration-300">Vision</a>
-        <a href="#" className="hover:text-[#CFA866] transition-colors duration-300">Dining</a>
-        <a href="#" className="hover:text-[#CFA866] transition-colors duration-300">Wellness</a>
-        <a href="#" className="hover:text-[#CFA866] transition-colors duration-300">Journal</a>
+        <a href="#philosophy" className="hover:text-[#CFA866] transition-colors duration-300">Vision</a>
+        <a href="#rooms" className="hover:text-[#CFA866] transition-colors duration-300">Rooms</a>
+        <a href="#dining" className="hover:text-[#CFA866] transition-colors duration-300">Dining</a>
       </div>
 
       <button className="group flex items-center gap-2">

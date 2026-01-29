@@ -1,6 +1,6 @@
 export default function DiningSection() {
   return (
-    <section className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center">
+    <section id="dining" className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0">
         <img src="https://images.unsplash.com/photo-1519608487953-e999c9cdc291?q=80&w=2670&auto=format&fit=crop" className="w-full h-full object-cover object-center" style={{ transform: 'scale(1.1)' }} alt="Lobby" />
         <div className="absolute inset-0 bg-stone-900/30"></div>
