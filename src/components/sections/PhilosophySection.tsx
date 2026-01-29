@@ -1,3 +1,6 @@
+import bedroom from '../../assets/images/bedroom/bedroom.png';
+import bedroom2 from '../../assets/images/bedroom/bedroom4.png';
+
 export default function PhilosophySection() {
   return (
     <section className="relative py-32 px-6 md:px-12 bg-[#FDFBF7]">
@@ -19,10 +22,10 @@ export default function PhilosophySection() {
           <div className="md:col-span-6 relative">
             {/* Asymmetric Image Layout */}
             <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
-              <img src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=2070&auto=format&fit=crop" alt="Interior Design" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[1500ms] ease-out" />
+              <img src={bedroom} alt="Interior Design" className="w-full h-full object-cover" />
             </div>
             <div className="absolute -bottom-12 -left-12 w-48 h-64 overflow-hidden hidden md:block border-4 border-[#FDFBF7]">
-              <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" alt="Detail" className="w-full h-full object-cover" />
+              <img src={bedroom2} alt="Detail" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
