@@ -3,14 +3,28 @@ import React from 'react';
 export default function Navbar() {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    // Check if we're on the home page
+    if (window.location.pathname === '/') {
+      // We're on home page, just scroll to section
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // We're on a different page, navigate to home with hash
+      window.location.href = `/#${id}`;
     }
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Check if we're on the home page
+    if (window.location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Navigate to home page
+      window.location.href = '/';
+    }
   };
 
   return (
