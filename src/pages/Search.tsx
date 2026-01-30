@@ -69,18 +69,18 @@ export default function Search() {
                 <div className="grid grid-cols-2 gap-4">
                      <div className="space-y-2">
                         <label className="text-[10px] uppercase tracking-widest font-bold text-stone-400">Nights</label>
-                         <div className="flex items-center bg-stone-100 rounded-md overflow-hidden">
-                            <button onClick={() => setNights(Math.max(1, nights - 1))} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold">-</button>
-                            <span className="flex-1 text-center text-sm font-bold text-stone-800">{nights}</span>
-                            <button onClick={() => setNights(nights + 1)} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold">+</button>
+                         <div className="flex items-center justify-center bg-stone-100 rounded-md overflow-hidden">
+                            <button onClick={() => setNights(Math.max(1, nights - 1))} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold flex items-center justify-center">-</button>
+                            <input type="number" value={nights} onChange={(e) => setNights(Math.max(1, Number(e.target.value) || 1))} className="w-16 text-center text-sm font-bold text-stone-800 bg-transparent border-none outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none py-3" min="1" />
+                            <button onClick={() => setNights(nights + 1)} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold flex items-center justify-center">+</button>
                          </div>
                     </div>
                      <div className="space-y-2">
                         <label className="text-[10px] uppercase tracking-widest font-bold text-stone-400">Rooms</label>
-                         <div className="flex items-center bg-stone-100 rounded-md overflow-hidden">
-                            <button onClick={() => setRooms(Math.max(1, rooms - 1))} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold">-</button>
-                            <span className="flex-1 text-center text-sm font-bold text-stone-800">{rooms}</span>
-                            <button onClick={() => setRooms(rooms + 1)} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold">+</button>
+                         <div className="flex items-center justify-center bg-stone-100 rounded-md overflow-hidden">
+                            <button onClick={() => setRooms(Math.max(1, rooms - 1))} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold flex items-center justify-center">-</button>
+                            <input type="number" value={rooms} onChange={(e) => setRooms(Math.max(1, Number(e.target.value) || 1))} className="w-16 text-center text-sm font-bold text-stone-800 bg-transparent border-none outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none py-3" min="1" />
+                            <button onClick={() => setRooms(rooms + 1)} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold flex items-center justify-center">+</button>
                          </div>
                     </div>
                 </div>
@@ -89,18 +89,18 @@ export default function Search() {
                     <div className="grid grid-cols-2 gap-3">
                          <div className="space-y-1">
                             <label className="text-[9px] uppercase tracking-widest text-stone-400">Adults<br/><span className="lowercase font-normal">(13 yrs & above)</span></label>
-                            <div className="flex items-center bg-stone-100 rounded-md overflow-hidden">
-                                <button onClick={() => setAdults(Math.max(1, adults - 1))} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold">-</button>
-                                <span className="flex-1 text-center text-sm font-bold text-stone-800">{adults}</span>
-                                <button onClick={() => setAdults(adults + 1)} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold">+</button>
+                            <div className="flex items-center justify-center bg-stone-100 rounded-md overflow-hidden">
+                                <button onClick={() => setAdults(Math.max(1, adults - 1))} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold flex items-center justify-center">-</button>
+                                <input type="number" value={adults} onChange={(e) => setAdults(Math.max(1, Number(e.target.value) || 1))} className="w-16 text-center text-sm font-bold text-stone-800 bg-transparent border-none outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none py-3" min="1" />
+                                <button onClick={() => setAdults(adults + 1)} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold flex items-center justify-center">+</button>
                             </div>
                         </div>
                          <div className="space-y-1">
                             <label className="text-[9px] uppercase tracking-widest text-stone-400">Children<br/><span className="lowercase font-normal">(6-12 yrs)</span></label>
-                            <div className="flex items-center bg-stone-100 rounded-md overflow-hidden">
-                                <button onClick={() => setChildrenCount(Math.max(0, childrenCount - 1))} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold">-</button>
-                                <span className="flex-1 text-center text-sm font-bold text-stone-800">{childrenCount}</span>
-                                <button onClick={() => setChildrenCount(childrenCount + 1)} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold">+</button>
+                            <div className="flex items-center justify-center bg-stone-100 rounded-md overflow-hidden">
+                                <button onClick={() => setChildrenCount(Math.max(0, childrenCount - 1))} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold flex items-center justify-center">-</button>
+                                <input type="number" value={childrenCount} onChange={(e) => setChildrenCount(Math.max(0, Number(e.target.value) || 0))} className="w-16 text-center text-sm font-bold text-stone-800 bg-transparent border-none outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none py-3" min="0" />
+                                <button onClick={() => setChildrenCount(childrenCount + 1)} className="px-4 py-3 hover:bg-stone-200 text-stone-600 font-bold flex items-center justify-center">+</button>
                             </div>
                         </div>
                     </div>
