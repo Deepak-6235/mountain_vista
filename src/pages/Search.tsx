@@ -26,7 +26,7 @@ export default function Search() {
       <Navbar />
       
       {/* Search Header - Steps */}
-      <div className="bg-white text-white pt-32 pb-4 px-6 md:px-12 sticky top-0 z-40 border-b border-stone-200">
+      <div className="bg-white/95 backdrop-blur-sm text-white pt-28 pb-4 px-6 md:px-12 border-t border-stone-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between overflow-x-auto scrollbar-hide">
             <div className="flex bg-white rounded-t-lg mx-auto w-full max-w-4xl border border-stone-200">
                  <div className="flex-1 text-center py-3 bg-[#8c7456] relative">
