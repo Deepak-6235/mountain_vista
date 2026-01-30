@@ -27,27 +27,33 @@ export default function Navbar() {
     }
   };
 
+  const isBookingPage = ['/search', '/rooms', '/review-pay'].includes(window.location.pathname);
+
   return (
-    <nav className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center transition-all duration-300 mix-blend-difference text-white bg-gradient-to-b from-black/40 to-transparent">
+    <nav className={`fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center transition-all duration-300 ${
+      isBookingPage 
+        ? 'bg-white shadow-sm text-stone-800' 
+        : 'mix-blend-difference text-white bg-gradient-to-b from-black/40 to-transparent'
+    }`}>
         <div className="flex items-center gap-2 cursor-pointer" onClick={scrollToTop}>
-            <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+            <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={isBookingPage ? 'text-stone-800' : 'text-white'}>
                 <path d="M5 10L20 25L35 10V30H30V18L20 28L10 18V30H5V10Z" fill="currentColor"></path>
             </svg>
         </div>
         
         {/* Center Menu */}
         <div className="hidden md:flex gap-12 text-sm font-medium tracking-widest uppercase opacity-90">
-            <a href="#philosophy" onClick={(e) => scrollToSection(e, 'philosophy')} className="hover:text-[#CFA866] transition-colors duration-300">Philosophy</a>
-            <a href="#rooms" onClick={(e) => scrollToSection(e, 'rooms')} className="hover:text-[#CFA866] transition-colors duration-300">Residences</a>
-            <a href="#wellness" onClick={(e) => scrollToSection(e, 'wellness')} className="hover:text-[#CFA866] transition-colors duration-300">Wellness</a>
-            <a href="#dining" onClick={(e) => scrollToSection(e, 'dining')} className="hover:text-[#CFA866] transition-colors duration-300">Dining</a>
-            <a href="#experiences" onClick={(e) => scrollToSection(e, 'experiences')} className="hover:text-[#CFA866] transition-colors duration-300">Experiences</a>
+            <a href="#philosophy" onClick={(e) => scrollToSection(e, 'philosophy')} className={`transition-colors duration-300 ${isBookingPage ? 'hover:text-[#8c7456]' : 'hover:text-[#CFA866]'}`}>Philosophy</a>
+            <a href="#rooms" onClick={(e) => scrollToSection(e, 'rooms')} className={`transition-colors duration-300 ${isBookingPage ? 'hover:text-[#8c7456]' : 'hover:text-[#CFA866]'}`}>Residences</a>
+            <a href="#wellness" onClick={(e) => scrollToSection(e, 'wellness')} className={`transition-colors duration-300 ${isBookingPage ? 'hover:text-[#8c7456]' : 'hover:text-[#CFA866]'}`}>Wellness</a>
+            <a href="#dining" onClick={(e) => scrollToSection(e, 'dining')} className={`transition-colors duration-300 ${isBookingPage ? 'hover:text-[#8c7456]' : 'hover:text-[#CFA866]'}`}>Dining</a>
+            <a href="#experiences" onClick={(e) => scrollToSection(e, 'experiences')} className={`transition-colors duration-300 ${isBookingPage ? 'hover:text-[#8c7456]' : 'hover:text-[#CFA866]'}`}>Experiences</a>
         </div>
 
         {/* Right Actions */}
         <div className="flex items-center gap-6">
             {/* Hide Book Stay button on booking flow pages */}
-            {!['/search', '/rooms', '/review-pay'].includes(window.location.pathname) && (
+            {!isBookingPage && (
               <button 
                 onClick={() => window.location.href = '/search'}
                 className="hidden md:flex items-center gap-2 border border-white/30 px-5 py-2 rounded-full hover:bg-white hover:text-stone-900 transition-all duration-300 group"
@@ -60,7 +66,7 @@ export default function Navbar() {
 
             <button className="group flex items-center gap-2 md:hidden">
                 {/* @ts-ignore */}
-                <iconify-icon icon="solar:hamburger-menu-linear" width="28" height="28" class="text-white group-hover:text-[#CFA866] transition-colors"></iconify-icon>
+                <iconify-icon icon="solar:hamburger-menu-linear" width="28" height="28" class={`transition-colors ${isBookingPage ? 'text-stone-800 group-hover:text-[#8c7456]' : 'text-white group-hover:text-[#CFA866]'}`}></iconify-icon>
             </button>
         </div>
     </nav>
