@@ -131,6 +131,20 @@ export default function Rooms() {
           }
         }
 
+        @keyframes smoothSpin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .smooth-spinner {
+          animation: smoothSpin 1s cubic-bezier(0.4, 0.15, 0.6, 0.85) infinite;
+          will-change: transform;
+        }
+
         .content-enter {
           animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -218,7 +232,7 @@ export default function Rooms() {
       {isEntering && (
         <div className="flex-grow flex items-center justify-center py-32">
           <div className="text-center">
-            <div className="w-16 h-16 border-4 border-[#8c7456]/20 border-t-[#8c7456] rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-16 h-16 border-4 border-[#8c7456]/20 border-t-[#8c7456] rounded-full smooth-spinner mx-auto mb-4"></div>
             <p className="text-[#8c7456] text-sm uppercase tracking-widest font-medium">Loading Rooms...</p>
           </div>
         </div>
