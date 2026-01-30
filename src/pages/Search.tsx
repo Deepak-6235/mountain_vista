@@ -26,17 +26,17 @@ export default function Search() {
       <Navbar />
       
       {/* Search Header - Steps */}
-      <div className="bg-[#8c7456] text-white pt-32 pb-4 px-6 md:px-12 sticky top-0 z-40">
+      <div className="bg-white text-white pt-32 pb-4 px-6 md:px-12 sticky top-0 z-40 border-b border-stone-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between overflow-x-auto scrollbar-hide">
-            <div className="flex bg-[#786146] rounded-t-lg mx-auto w-full max-w-4xl">
+            <div className="flex bg-white rounded-t-lg mx-auto w-full max-w-4xl border border-stone-200">
                  <div className="flex-1 text-center py-3 bg-[#8c7456] relative">
                     <span className="uppercase text-xs font-bold tracking-widest text-white">Search</span>
                     <div className="absolute top-0 right-[-14px] w-0 h-0 border-t-[20px] border-t-transparent border-l-[14px] border-l-[#8c7456] border-b-[20px] border-b-transparent z-10"></div>
                  </div>
-                 <div className="flex-1 text-center py-3 bg-[#e6e1da] text-[#8c7456]">
+                 <div className="flex-1 text-center py-3 bg-white text-stone-400">
                     <span className="uppercase text-xs font-bold tracking-widest">Rooms& Rates</span>
                  </div>
-                 <div className="flex-1 text-center py-3 bg-[#e6e1da] text-[#8c7456] border-l border-white/20">
+                 <div className="flex-1 text-center py-3 bg-white text-stone-400 border-l border-stone-200">
                     <span className="uppercase text-xs font-bold tracking-widest">Review & Pay</span>
                  </div>
             </div>
