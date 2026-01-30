@@ -11,7 +11,6 @@ export default function Search() {
   const [checkOutDate, setCheckOutDate] = useState<Date | null>(new Date(new Date().setDate(new Date().getDate() + 5)));
   const [adults, setAdults] = useState(2);
   const [childrenCount, setChildrenCount] = useState(0);
-  const [infantsCount, setInfantsCount] = useState(0);
   const [nights, setNights] = useState(5);
   const [rooms, setRooms] = useState(1);
 
@@ -106,7 +105,20 @@ export default function Search() {
                     </div>
                  </div>
 
-                 <button className="w-full md:w-auto bg-[#8c7456] text-white uppercase tracking-widest text-xs font-bold py-4 px-8 mt-4 hover:bg-[#786146] transition-colors shadow-lg">
+                 <button 
+                    onClick={() => {
+                      const params = new URLSearchParams({
+                        checkIn: checkInDate ? format(checkInDate, 'dd/MM/yyyy') : '',
+                        checkOut: checkOutDate ? format(checkOutDate, 'dd/MM/yyyy') : '',
+                        nights: nights.toString(),
+                        rooms: rooms.toString(),
+                        adults: adults.toString(),
+                        children: childrenCount.toString()
+                      });
+                      window.location.href = `/rooms?${params.toString()}`;
+                    }}
+                    className="w-full md:w-auto bg-[#8c7456] text-white uppercase tracking-widest text-xs font-bold py-4 px-8 mt-4 hover:bg-[#786146] transition-colors shadow-lg"
+                 >
                     Proceed
                  </button>
 
