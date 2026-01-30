@@ -1,5 +1,3 @@
-
-
 export default function Footer() {
   return (
     <footer className="bg-[#F9F7F2] pt-24 pb-12 px-6 border-t border-stone-200">
@@ -56,13 +54,13 @@ export default function Footer() {
 
             <div className="md:col-span-1 flex flex-col items-start md:items-end justify-between">
                 <div className="flex gap-4">
-                    <a href="#" className="p-2 border border-stone-300 rounded-full text-stone-500 hover:bg-stone-900 hover:border-stone-900 hover:text-white transition-all">
+                    <a href="#" className="w-8 h-8 border border-stone-300 rounded-full text-stone-500 hover:bg-stone-900 hover:border-stone-900 hover:text-white transition-all flex items-center justify-center">
                         {/* @ts-ignore */}
                         <iconify-icon icon="brandico:instagram" width="16"></iconify-icon>
                     </a>
-                    <a href="#" className="p-2 border border-stone-300 rounded-full text-stone-500 hover:bg-stone-900 hover:border-stone-900 hover:text-white transition-all">
+                    <a href="#" className="w-8 h-8 border border-stone-300 rounded-full text-stone-500 hover:bg-stone-900 hover:border-stone-900 hover:text-white transition-all flex items-center justify-center">
                         {/* @ts-ignore */}
-                        <iconify-icon icon="brandico:facebook" width="16"></iconify-icon>
+                        <iconify-icon icon="brandico:facebook" width="18" height="18"></iconify-icon>
                     </a>
                 </div>
                 <div className="mt-8 md:mt-0">
