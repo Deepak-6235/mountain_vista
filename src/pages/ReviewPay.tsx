@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/global/Navbar';
 import Footer from '../components/global/Footer';
@@ -14,6 +14,13 @@ export default function ReviewPay() {
     phone: '',
     specialRequests: ''
   });
+  const [isEntering, setIsEntering] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsEntering(false), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Read booking data from URL parameters
   const params = new URLSearchParams(window.location.search);
@@ -51,6 +58,28 @@ export default function ReviewPay() {
 
   return (
     <div className="bg-[#FDFBF7] min-h-screen flex flex-col font-sans text-stone-600">
+      <style>{`
+        @keyframes fadeInSlide {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .content-enter {
+          animation: fadeInSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .content-exit {
+          opacity: 0;
+          transform: translateY(-20px) scale(0.98);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.6, 1);
+        }
+      `}</style>
       <Navbar />
       
       {/* Steps Header */}
@@ -143,7 +172,7 @@ export default function ReviewPay() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow max-w-7xl mx-auto w-full px-6 md:px-12 py-8">
+      <div className={`flex-grow max-w-7xl mx-auto w-full px-6 md:px-12 py-8 ${!isEntering ? 'content-enter' : 'opacity-0'} ${isExiting ? 'content-exit' : ''}`}>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Guest Details Form */}
           <div className="lg:col-span-2">

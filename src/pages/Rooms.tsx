@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/global/Navbar';
 import Footer from '../components/global/Footer';
 
@@ -48,6 +49,7 @@ const rooms = [
 ];
 
 export default function Rooms() {
+  const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [selectedRoom, setSelectedRoom] = useState<typeof rooms[0] | null>(null);
   const [mealPlanQuantities, setMealPlanQuantities] = useState<{[key: string]: number}>({
@@ -56,6 +58,14 @@ export default function Rooms() {
     'breakfast-lunch-dinner': 1,
     'breakfast-lunch-and-dinner': 1
   });
+  const [isEntering, setIsEntering] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
+
+  useEffect(() => {
+    // Trigger entrance animation
+    const timer = setTimeout(() => setIsEntering(false), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Read booking data from URL parameters
   const params = new URLSearchParams(window.location.search);
@@ -83,7 +93,9 @@ export default function Rooms() {
 
   const handleBookMealPlan = (plan: typeof mealPlans[0]) => {
     if (!selectedRoom) return;
-    
+
+    setIsExiting(true);
+
     // Pass all booking data to review-pay page
     const reviewParams = new URLSearchParams({
       checkIn,
@@ -99,11 +111,47 @@ export default function Rooms() {
       mealPlanName: plan.name,
       mealPlanPrice: plan.basePrice.toString()
     });
-    window.location.href = `/review-pay?${reviewParams.toString()}`;
+
+    setTimeout(() => {
+      navigate(`/review-pay?${reviewParams.toString()}`);
+    }, 500);
   };
 
   return (
     <div className="bg-[#FDFBF7] min-h-screen flex flex-col font-sans text-stone-600">
+      <style>{`
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .content-enter {
+          animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .content-exit {
+          opacity: 0;
+          transform: translateY(-20px) scale(0.98);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
+        .stagger-item {
+          opacity: 0;
+          animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .stagger-item:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-item:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-item:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-item:nth-child(4) { animation-delay: 0.4s; }
+        .stagger-item:nth-child(5) { animation-delay: 0.5s; }
+      `}</style>
       <Navbar />
       
       {/* Steps Header */}
@@ -142,8 +190,9 @@ export default function Rooms() {
               <span className="font-medium text-stone-700">{roomsCount} ROOMS/VILLA : {adults} ADULTS + {children} CHILDREN</span>
             </div>
           </div>
-          <button 
+          <button
             onClick={() => {
+              setIsExiting(true);
               const searchParams = new URLSearchParams({
                 checkIn,
                 checkOut,
@@ -152,9 +201,11 @@ export default function Rooms() {
                 adults: adults.toString(),
                 children: children.toString()
               });
-              window.location.href = `/search?${searchParams.toString()}`;
+              setTimeout(() => {
+                navigate(`/search?${searchParams.toString()}`);
+              }, 500);
             }}
-            className="text-[#8c7456] text-xs uppercase tracking-widest font-bold flex items-center gap-2"
+            className="text-[#8c7456] text-xs uppercase tracking-widest font-bold flex items-center gap-2 hover:opacity-70 transition-opacity"
           >
             {/* @ts-ignore */}
             <iconify-icon icon="solar:pen-linear" width="16"></iconify-icon>
@@ -164,7 +215,7 @@ export default function Rooms() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow max-w-7xl mx-auto w-full px-6 md:px-12 py-8">
+      <div className={`flex-grow max-w-7xl mx-auto w-full px-6 md:px-12 py-8 ${!isEntering ? 'content-enter' : 'opacity-0'} ${isExiting ? 'content-exit' : ''}`}>
         {/* Header with View Toggle */}
         <div className="flex items-center justify-between mb-6">
           <div>

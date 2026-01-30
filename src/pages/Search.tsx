@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/global/Navbar';
 import Footer from '../components/global/Footer';
 import DatePicker from "react-datepicker";
@@ -6,9 +7,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from 'date-fns';
 
 export default function Search() {
+  const navigate = useNavigate();
+
   // Read URL parameters
   const params = new URLSearchParams(window.location.search);
-  
+
   // Parse dates from URL or use defaults
   const parseDate = (dateStr: string | null) => {
     if (!dateStr) return null;
@@ -31,6 +34,14 @@ export default function Search() {
   const [childrenCount, setChildrenCount] = useState(urlChildren);
   const [nights, setNights] = useState(parseInt(params.get('nights') || '5'));
   const [rooms, setRooms] = useState(parseInt(params.get('rooms') || '1'));
+  const [isNavigating, setIsNavigating] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
+  const [isEntering, setIsEntering] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsEntering(false), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   const onChange = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;
@@ -40,9 +51,31 @@ export default function Search() {
 
   return (
     <div className="bg-[#FDFBF7] min-h-screen flex flex-col font-sans text-stone-600">
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .content-enter {
+          animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .content-exit {
+          opacity: 0;
+          transform: translateY(-20px) scale(0.98);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.6, 1);
+        }
+      `}</style>
       <Navbar />
       
-      {/* Search Header - Steps */}
+      {/* Search Header - Steps - NO ANIMATION */}
       <div className="bg-white/95 backdrop-blur-sm text-white pt-28 pb-4 px-6 md:px-12 border-t border-stone-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between overflow-x-auto scrollbar-hide">
             <div className="flex bg-white rounded-t-lg mx-auto w-full max-w-4xl border border-stone-200">
@@ -60,7 +93,7 @@ export default function Search() {
         </div>
       </div>
 
-      <div className="flex-grow max-w-7xl mx-auto w-full px-6 md:px-12 py-12">
+      <div className={`flex-grow max-w-7xl mx-auto w-full px-6 md:px-12 py-12 ${!isEntering ? 'content-enter' : 'opacity-0'} ${isExiting ? 'content-exit' : ''}`}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Left Column - Controls */}
             <div className="lg:col-span-4 space-y-8">
@@ -123,8 +156,11 @@ export default function Search() {
                     </div>
                  </div>
 
-                 <button 
+                 <button
                     onClick={() => {
+                      if (isNavigating) return;
+
+                      setIsNavigating(true);
                       const params = new URLSearchParams({
                         checkIn: checkInDate ? format(checkInDate, 'dd/MM/yyyy') : '',
                         checkOut: checkOutDate ? format(checkOutDate, 'dd/MM/yyyy') : '',
@@ -133,11 +169,40 @@ export default function Search() {
                         adults: adults.toString(),
                         children: childrenCount.toString()
                       });
-                      window.location.href = `/rooms?${params.toString()}`;
+
+                      // Start exit animation
+                      setTimeout(() => {
+                        setIsExiting(true);
+                      }, 300);
+
+                      // Navigate after exit animation completes
+                      setTimeout(() => {
+                        navigate(`/rooms?${params.toString()}`);
+                      }, 800);
                     }}
-                    className="w-full md:w-auto bg-[#8c7456] text-white uppercase tracking-widest text-xs font-bold py-4 px-8 mt-4 hover:bg-[#786146] transition-colors shadow-lg"
+                    disabled={isNavigating}
+                    className={`
+                      w-full md:w-auto bg-[#8c7456] text-white uppercase tracking-widest text-xs font-bold
+                      py-4 px-8 mt-4 shadow-lg relative overflow-hidden
+                      transition-all duration-200 ease-out
+                      ${isNavigating
+                        ? 'scale-95 opacity-90 bg-[#786146]'
+                        : 'hover:bg-[#786146] hover:shadow-xl hover:scale-[1.02] active:scale-95'
+                      }
+                      transform will-change-transform
+                    `}
                  >
-                    Proceed
+                    <span className={`
+                      inline-block transition-all duration-200 ease-out
+                      ${isNavigating ? 'opacity-0 translate-y-1' : 'opacity-100 translate-y-0'}
+                    `}>
+                      Proceed
+                    </span>
+                    {isNavigating && (
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      </span>
+                    )}
                  </button>
 
                  <div className="mt-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
