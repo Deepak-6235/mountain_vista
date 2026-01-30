@@ -102,7 +102,7 @@ export default function BookingBar() {
             </div>
 
             <button className="bg-stone-900 text-[#FDFBF7] rounded-full h-12 w-12 md:w-auto md:px-8 md:py-3 text-sm font-medium tracking-wide uppercase hover:bg-[#CFA866] hover:text-white transition-all duration-500 shadow-lg flex items-center justify-center gap-2 shrink-0 ml-4 z-20">
-                <span className="hidden md:inline">Check Availability</span>
+                <span className="hidden md:inline" onClick={() => window.location.href = '/search'}>Check Availability</span>
                 {/* @ts-ignore */}
                 <iconify-icon icon="solar:arrow-right-linear" width="20" height="20"></iconify-icon>
             </button>
