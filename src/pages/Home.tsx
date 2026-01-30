@@ -11,6 +11,20 @@ import ExperiencesSection from '../components/sections/ExperiencesSection';
 
 export default function Home() {
   useEffect(() => {
+    // Handle hash-based scrolling when page loads
+    const hash = window.location.hash;
+    if (hash) {
+      // Remove the # from hash
+      const id = hash.substring(1);
+      // Wait a bit for the page to fully render
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+
     // Simple parallax logic for specific sections
     const handleScroll = () => {
         const scrollY = window.scrollY;

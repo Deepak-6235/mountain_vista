@@ -46,11 +46,17 @@ export default function Navbar() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-6">
-            <button className="hidden md:flex items-center gap-2 border border-white/30 px-5 py-2 rounded-full hover:bg-white hover:text-stone-900 transition-all duration-300 group">
-                <span className="text-xs font-semibold tracking-widest uppercase">Book Stay</span>
-                {/* @ts-ignore */}
-                <iconify-icon icon="solar:calendar-linear" width="16" height="16" class="group-hover:text-[#CFA866]"></iconify-icon>
-            </button>
+            {/* Hide Book Stay button on booking flow pages */}
+            {!['/search', '/rooms', '/review-pay'].includes(window.location.pathname) && (
+              <button 
+                onClick={() => window.location.href = '/search'}
+                className="hidden md:flex items-center gap-2 border border-white/30 px-5 py-2 rounded-full hover:bg-white hover:text-stone-900 transition-all duration-300 group"
+              >
+                  <span className="text-xs font-semibold tracking-widest uppercase">Book Stay</span>
+                  {/* @ts-ignore */}
+                  <iconify-icon icon="solar:calendar-linear" width="16" height="16" class="group-hover:text-[#CFA866]"></iconify-icon>
+              </button>
+            )}
 
             <button className="group flex items-center gap-2 md:hidden">
                 {/* @ts-ignore */}

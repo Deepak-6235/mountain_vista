@@ -101,8 +101,19 @@ export default function BookingBar() {
                 <span className="text-xs font-serif italic text-stone-600">Best rates guaranteed</span>
             </div>
 
-            <button className="bg-stone-900 text-[#FDFBF7] rounded-full h-12 w-12 md:w-auto md:px-8 md:py-3 text-sm font-medium tracking-wide uppercase hover:bg-[#CFA866] hover:text-white transition-all duration-500 shadow-lg flex items-center justify-center gap-2 shrink-0 ml-4 z-20">
-                <span className="hidden md:inline" onClick={() => window.location.href = '/search'}>Check Availability</span>
+            <button 
+              onClick={() => {
+                const params = new URLSearchParams({
+                  checkIn: checkInDate ? checkInDate.toLocaleDateString('en-GB').replace(/\//g, '/') : '',
+                  checkOut: checkOutDate ? checkOutDate.toLocaleDateString('en-GB').replace(/\//g, '/') : '',
+                  adults: adults.toString(),
+                  children: childrenCount.toString()
+                });
+                window.location.href = `/search?${params.toString()}`;
+              }}
+              className="bg-stone-900 text-[#FDFBF7] rounded-full h-12 w-12 md:w-auto md:px-8 md:py-3 text-sm font-medium tracking-wide uppercase hover:bg-[#CFA866] hover:text-white transition-all duration-500 shadow-lg flex items-center justify-center gap-2 shrink-0 ml-4 z-20"
+            >
+                <span className="hidden md:inline">Check Availability</span>
                 {/* @ts-ignore */}
                 <iconify-icon icon="solar:arrow-right-linear" width="20" height="20"></iconify-icon>
             </button>

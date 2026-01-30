@@ -6,13 +6,31 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from 'date-fns';
 
 export default function Search() {
-  // Mock state for Search Page - in a real app, this would come from URL params or Context
-  const [checkInDate, setCheckInDate] = useState<Date | null>(new Date());
-  const [checkOutDate, setCheckOutDate] = useState<Date | null>(new Date(new Date().setDate(new Date().getDate() + 5)));
-  const [adults, setAdults] = useState(2);
-  const [childrenCount, setChildrenCount] = useState(0);
-  const [nights, setNights] = useState(5);
-  const [rooms, setRooms] = useState(1);
+  // Read URL parameters
+  const params = new URLSearchParams(window.location.search);
+  
+  // Parse dates from URL or use defaults
+  const parseDate = (dateStr: string | null) => {
+    if (!dateStr) return null;
+    const parts = dateStr.split('/');
+    if (parts.length === 3) {
+      // Format is DD/MM/YYYY
+      return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+    }
+    return null;
+  };
+
+  const urlCheckIn = parseDate(params.get('checkIn'));
+  const urlCheckOut = parseDate(params.get('checkOut'));
+  const urlAdults = parseInt(params.get('adults') || '2');
+  const urlChildren = parseInt(params.get('children') || '0');
+
+  const [checkInDate, setCheckInDate] = useState<Date | null>(urlCheckIn || new Date());
+  const [checkOutDate, setCheckOutDate] = useState<Date | null>(urlCheckOut || new Date(new Date().setDate(new Date().getDate() + 5)));
+  const [adults, setAdults] = useState(urlAdults);
+  const [childrenCount, setChildrenCount] = useState(urlChildren);
+  const [nights, setNights] = useState(parseInt(params.get('nights') || '5'));
+  const [rooms, setRooms] = useState(parseInt(params.get('rooms') || '1'));
 
   const onChange = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;
@@ -160,6 +178,7 @@ export default function Search() {
                         selectsRange
                         inline
                         monthsShown={2}
+                        minDate={new Date()}
                         renderDayContents={(day) => {
                             return (
                                 <div className="flex flex-col items-center justify-center h-full">
