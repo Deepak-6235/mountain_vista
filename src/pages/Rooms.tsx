@@ -114,9 +114,9 @@ export default function Rooms() {
                     <span className="uppercase text-xs font-bold tracking-widest">Search</span>
                  </div>
                  <div className="flex-1 text-center py-3 bg-[#8c7456] text-white relative">
-                    <div className="absolute top-0 left-[-16px] w-0 h-0 border-t-[22px] border-t-transparent border-r-[16px] border-r-[#8c7456] border-b-[22px] border-b-transparent z-10"></div>
+                    <div className="absolute top-0 left-[-15px] w-0 h-0 border-t-[23px] border-t-transparent border-r-[15px] border-r-[#8c7456] border-b-[23px] border-b-transparent z-10"></div>
                     <span className="uppercase text-xs font-bold tracking-widest">Rooms& Rates</span>
-                    <div className="absolute top-0 right-[-16px] w-0 h-0 border-t-[22px] border-t-transparent border-l-[16px] border-l-[#8c7456] border-b-[22px] border-b-transparent z-10"></div>
+                    <div className="absolute top-0 right-[-15px] w-0 h-0 border-t-[23px] border-t-transparent border-l-[15px] border-l-[#8c7456] border-b-[23px] border-b-transparent z-10"></div>
                  </div>
                  <div className="flex-1 text-center py-3 bg-white text-stone-400">
                     <span className="uppercase text-xs font-bold tracking-widest">Review & Pay</span>

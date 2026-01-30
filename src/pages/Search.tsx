@@ -48,7 +48,7 @@ export default function Search() {
             <div className="flex bg-white rounded-t-lg mx-auto w-full max-w-4xl border border-stone-200">
                  <div className="flex-1 text-center py-3 bg-[#8c7456] relative">
                     <span className="uppercase text-xs font-bold tracking-widest text-white">Search</span>
-                    <div className="absolute top-0 right-[-16px] w-0 h-0 border-t-[22px] border-t-transparent border-l-[16px] border-l-[#8c7456] border-b-[22px] border-b-transparent z-10"></div>
+                    <div className="absolute top-0 right-[-15px] w-0 h-0 border-t-[23px] border-t-transparent border-l-[15px] border-l-[#8c7456] border-b-[23px] border-b-transparent z-10"></div>
                  </div>
                  <div className="flex-1 text-center py-3 bg-white text-stone-400">
                     <span className="uppercase text-xs font-bold tracking-widest">Rooms& Rates</span>
